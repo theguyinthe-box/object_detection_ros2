@@ -53,8 +53,8 @@ PclObjectDetection::PclObjectDetection(
   auto sensor_qos = rclcpp::QoS(rclcpp::SensorDataQoS());
   std::function<void(const sensor_msgs::msg::LaserScan::SharedPtr)> subscription_callback = std::bind(&PclObjectDetection::cloud_callback,
       this, std::placeholders::_1);
-  subscription_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
-        "scan_filtered",
+  subscription_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
+        "carla_lidar_scan",
         sensor_qos,
         subscription_callback);
 
